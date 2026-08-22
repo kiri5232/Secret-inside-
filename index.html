@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Surprise</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for Aesthetic Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div class="app-container">
+
+        <!-- Screen 1, 2, 3: Text Intro -->
+        <div id="screen-intro" class="screen active">
+            <h1 id="intro-text" class="typing-effect"></h1>
+            <div id="heart-icon" class="heart hidden">♥</div>
+            <button id="next-intro-btn" class="tap-hint hidden">Tap to continue...</button>
+        </div>
+
+        <!-- Screen 4: Gift Screen -->
+        <div id="screen-gift" class="screen hidden">
+            <h2 class="romantic-heading">Open the surprise</h2>
+            <div class="arrow-down">↓</div>
+            <div id="gift-box" class="gift-box">
+                <div class="gift-ribbon"></div>
+                <div class="gift-body">🎁</div>
+            </div>
+        </div>
+
+        <!-- Screen 5 & 6: Letter Envelope & Letter Open -->
+        <div id="screen-letter" class="screen hidden">
+            <!-- Closed Envelope (Screen 5) -->
+            <div id="envelope" class="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-paper-preview">
+                    <span>Happiest...</span>
+                </div>
+                <p class="tap-instruction">Tap the letter</p>
+            </div>
+
+            <!-- Opened Letter Content (Screen 6) -->
+            <div id="letter-content" class="letter-paper hidden">
+                <h3>Hey neighbour,</h3>
+                <p>
+                    We might just be living next to each other, but somehow I felt like 
+                    we needed something more than just a 'hi'.
+                </p>
+                <p>
+                    So here I am... sending you a little surprise wrapped with good vibes 
+                    and a lot of sincerity.
+                </p>
+                <p>
+                    Thank you for being a part of this little neighbourhood.
+                </p>
+                <button id="continue-to-question-btn" class="action-btn">Next ♡</button>
+            </div>
+        </div>
+
+        <!-- Screen 7, 8, 9: Question & Runaway No Button -->
+        <div id="screen-question" class="screen hidden">
+            <p id="question-subtitle">One tiny question...</p>
+            <h2 id="question-title">Will you be my friend?</h2>
+            <div class="heart-sub">♥</div>
+
+            <div class="button-group">
+                <button id="yes-btn" class="btn yes-btn">Yes</button>
+                <button id="no-btn" class="btn no-btn">No</button>
+            </div>
+        </div>
+
+        <!-- Screen 10, 11, 12: Success, Seed, Tree Growth & Final Message -->
+        <div id="screen-final" class="screen hidden">
+            <div id="success-header" class="success-text">
+                <h2>Yesss! 💕</h2>
+                <p>That made my day!</p>
+                <span class="sub-text">(something special is growing for you...)</span>
+            </div>
+
+            <!-- Animated Seed & Tree Container -->
+            <div id="tree-container" class="tree-container">
+                <div id="seed" class="seed hidden">🌱</div>
+                <div id="tree-stage" class="tree-stage"></div>
+            </div>
+
+            <!-- Final Birthday Message (Screen 12) -->
+            <div id="final-message" class="final-card hidden">
+                <div class="final-content">
+                    <h1>Hey you 💕</h1>
+                    <h2>Happy Birthday 💕</h2>
+                    <p>May God bless you 💚</p>
+                    <p>And give u many happiness 💕</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
