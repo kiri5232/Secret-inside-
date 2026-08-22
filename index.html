@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Hello, Neighbour</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main id="app">
+
+    <!-- Subtle cinematic grain -->
+    <div class="grain"></div>
+
+
+    <!-- =========================
+         INTRO
+    ========================== -->
+
+    <section class="scene active" id="intro">
+
+      <div class="orb"></div>
+
+      <p class="eyebrow">
+        A tiny secret
+      </p>
+
+      <h1>
+        Hey,<br>
+        <span>new neighbour.</span>
+      </h1>
+
+      <p class="sub">
+        I made something a little unnecessary.<br>
+        But hopefully worth opening.
+      </p>
+
+      <button class="primary" data-next="gift">
+        Open it
+        <span>↗</span>
+      </button>
+
+    </section>
+
+
+
+    <!-- =========================
+         GIFT
+    ========================== -->
+
+    <section class="scene" id="gift">
+
+      <div class="gift-wrap">
+
+        <div class="gift">
+
+          <div class="lid"></div>
+
+          <div class="box"></div>
+
+          <div class="ribbon"></div>
+
+        </div>
+
+      </div>
+
+      <p class="eyebrow">
+        A small surprise
+      </p>
+
+      <h2>
+        Go on. Open it.
+      </h2>
+
+      <p class="sub">
+        Tap the gift.
+      </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         LETTER
+    ========================== -->
+
+    <section class="scene" id="letterScene">
+
+      <div class="letter-stage">
+
+        <div class="letter-envelope" id="envelope">
+
+          <div class="envelope-back"></div>
+
+          <div class="letter-paper">
+
+            <div class="letter-content">
+
+              <p class="letter-small">
+                HELLO, NEIGHBOUR
+              </p>
+
+              <h2>
+                One slightly<br>
+                unnecessary letter.
+              </h2>
+
+              <p>
+                We've technically been neighbours for a while,
+                but somehow never properly introduced ourselves.
+              </p>
+
+              <p>
+                So instead of doing the normal
+                “hi” thing… I made this.
+              </p>
+
+              <p>
+                Yes. I know.
+                This was probably unnecessary. 😅
+              </p>
+
+              <p>
+                But hey, you only get one chance
+                to make a first impression.
+              </p>
+
+              <button class="primary small" data-next="question">
+                Continue
+                <span>↗</span>
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <p class="tap-hint">
+        tap the letter to open
+      </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         FRIENDSHIP QUESTION
+    ========================== -->
+
+    <section class="scene" id="question">
+
+      <p class="eyebrow">
+        One tiny question
+      </p>
+
+      <h1>
+        Want to be<br>
+        <span>friends?</span>
+      </h1>
+
+      <div class="choices">
+
+        <button class="choice yes" id="yes">
+          Yes ✦
+        </button>
+
+        <button class="choice no" id="no">
+          No
+        </button>
+
+      </div>
+
+      <p class="tiny">
+        No pressure. This is just a little experiment
+        in being unnecessarily creative.
+      </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         NO ENDING
+    ========================== -->
+
+    <section class="scene" id="noScene">
+
+      <div class="moon"></div>
+
+      <p class="eyebrow">
+        Fair enough
+      </p>
+
+      <h1>
+        Okay, neighbour. 😄
+      </h1>
+
+      <p class="sub">
+        Sorry if this was unexpected.<br>
+        I just wanted to make something fun.
+      </p>
+
+      <p class="signature">
+        Take care ✦
+      </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         YES / TREE EXPERIENCE
+    ========================== -->
+
+    <section class="scene tree-scene" id="treeScene">
+
+      <canvas id="treeCanvas"></canvas>
+
+      <div class="tree-copy">
+
+        <p class="eyebrow">
+          A little something grew
+        </p>
+
+        <h1>
+          Looks like we<br>
+          <span>made a memory.</span>
+        </h1>
+
+        <p class="sub">
+          Welcome, neighbour. 🌱
+        </p>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+          </html>
