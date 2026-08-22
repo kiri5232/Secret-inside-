@@ -1,0 +1,652 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: #050506;
+  color: #f5f2ec;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  overflow: hidden;
+}
+
+
+/* =========================
+   SCENES
+========================= */
+
+.scene {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 32px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateY(18px) scale(0.985);
+
+  transition:
+    opacity 0.8s ease,
+    transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.scene.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+
+/* =========================
+   GRAIN
+========================= */
+
+.grain {
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.06;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+
+  z-index: 20;
+}
+
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+.eyebrow {
+  font-size: 10px;
+
+  letter-spacing: 0.28em;
+
+  text-transform: uppercase;
+
+  opacity: 0.55;
+
+  margin: 0 0 22px;
+}
+
+.sub {
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  opacity: 0.62;
+
+  margin: 20px 0 30px;
+}
+
+h1,
+h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-weight: 500;
+
+  line-height: 0.94;
+
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(54px, 11vw, 108px);
+
+  letter-spacing: -0.04em;
+}
+
+h1 span,
+h2 span {
+  font-style: italic;
+
+  opacity: 0.82;
+}
+
+h2 {
+  font-size: 48px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.primary {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+
+  background: rgba(255, 255, 255, 0.05);
+
+  color: #fff;
+
+  padding: 14px 20px;
+
+  border-radius: 999px;
+
+  font:
+    500 12px "Inter",
+    sans-serif;
+
+  letter-spacing: 0.05em;
+
+  cursor: pointer;
+
+  transition: 0.35s;
+}
+
+.primary:hover {
+  background: #fff;
+
+  color: #050506;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.12);
+}
+
+.primary span {
+  margin-left: 14px;
+}
+
+.small {
+  padding: 11px 16px;
+
+  margin-top: 10px;
+}
+
+
+/* =========================
+   INTRO ORB
+========================= */
+
+.orb {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  box-shadow:
+    0 0 35px 12px rgba(255, 255, 255, 0.5);
+
+  margin-bottom: 42px;
+
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.35);
+
+    box-shadow:
+      0 0 50px 18px rgba(255, 255, 255, 0.25);
+  }
+}
+
+
+/* =========================
+   GIFT
+========================= */
+
+.gift-wrap {
+  height: 190px;
+
+  display: grid;
+
+  place-items: center;
+
+  margin-bottom: 30px;
+}
+
+.gift {
+  position: relative;
+
+  width: 120px;
+  height: 100px;
+
+  cursor: pointer;
+
+  filter:
+    drop-shadow(0 20px 30px rgba(0, 0, 0, 0.8));
+
+  transition:
+    transform 0.4s ease;
+}
+
+.gift:hover {
+  transform:
+    translateY(-5px)
+    rotate(-1deg);
+}
+
+
+/* Gift box */
+
+.box {
+  position: absolute;
+
+  left: 5px;
+  right: 5px;
+
+  bottom: 0;
+
+  height: 75px;
+
+  border-radius: 5px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #29262d,
+      #111116
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* Gift lid */
+
+.lid {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  top: 15px;
+
+  height: 28px;
+
+  border-radius: 5px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #3a3540,
+      #15131a
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.1);
+
+  z-index: 2;
+}
+
+
+/* Ribbon */
+
+.ribbon {
+  position: absolute;
+
+  width: 12px;
+
+  height: 100px;
+
+  left: 54px;
+
+  top: 15px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #d6c17a,
+      #fff0a8,
+      #9d8742
+    );
+
+  z-index: 3;
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-stage {
+  perspective: 1200px;
+
+  width: min(650px, 90vw);
+
+  height: min(560px, 65vh);
+
+  display: grid;
+
+  place-items: center;
+}
+
+.letter-envelope {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  cursor: pointer;
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 1s cubic-bezier(
+      0.2,
+      0.8,
+      0.2,
+      1
+    );
+}
+
+.letter-envelope.open {
+  transform:
+    rotateX(5deg)
+    translateY(-20px);
+}
+
+
+/* Envelope */
+
+.envelope-back {
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #24201d,
+      #0e0d0c
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.12);
+
+  box-shadow:
+    0 35px 90px rgba(0, 0, 0, 0.7);
+}
+
+
+/* Paper */
+
+.letter-paper {
+  position: absolute;
+
+  left: 5%;
+  right: 5%;
+
+  top: 8%;
+  bottom: 5%;
+
+  padding:
+    38px 8%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f4eee1,
+      #d9d0bf
+    );
+
+  color: #211d18;
+
+  border-radius: 5px;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.6);
+
+  transform:
+    translateY(44%)
+    rotateX(-3deg);
+
+  transition:
+    transform 1.2s cubic-bezier(
+      0.2,
+      0.8,
+      0.2,
+      1
+    );
+
+  overflow: auto;
+}
+
+.letter-envelope.open .letter-paper {
+  transform:
+    translateY(0)
+    rotateX(0);
+}
+
+
+/* Letter content */
+
+.letter-content {
+  opacity: 0;
+
+  transform:
+    translateY(20px);
+
+  transition:
+    opacity 0.8s 1s,
+    transform 0.8s 1s;
+
+  text-align: left;
+}
+
+.letter-envelope.open .letter-content {
+  opacity: 1;
+
+  transform: none;
+}
+
+.letter-small {
+  font-size: 9px;
+
+  letter-spacing: 0.25em;
+
+  opacity: 0.5;
+}
+
+.letter-content h2 {
+  font-size: 42px;
+
+  margin:
+    12px 0 25px;
+}
+
+.letter-content p:not(.letter-small) {
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 19px;
+
+  line-height: 1.35;
+
+  margin: 13px 0;
+}
+
+.letter-content .primary {
+  color: #211d18;
+
+  border-color:
+    rgba(33, 29, 24, 0.27);
+
+  background:
+    rgba(33, 29, 24, 0.03);
+}
+
+
+/* Letter hint */
+
+.tap-hint {
+  position: absolute;
+
+  bottom: 10%;
+
+  font-size: 10px;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+
+  opacity: 0.4;
+}
+
+
+/* =========================
+   YES / NO
+========================= */
+
+.choices {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 38px;
+}
+
+.choice {
+  padding:
+    15px 35px;
+
+  border-radius: 999px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.12);
+
+  background:
+    rgba(255, 255, 255, 0.03);
+
+  color: #fff;
+
+  font:
+    500 12px "Inter",
+    sans-serif;
+
+  cursor: pointer;
+
+  transition:
+    0.3s;
+}
+
+.choice:hover {
+  background: #fff;
+
+  color: #000;
+}
+
+.tiny {
+  font-size: 10px;
+
+  opacity: 0.3;
+
+  max-width: 350px;
+
+  margin-top: 28px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   NO SCREEN
+========================= */
+
+.moon {
+  width: 150px;
+  height: 150px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #fff,
+      #bdb6d7 28%,
+      #17151d 70%
+    );
+
+  box-shadow:
+    0 0 90px rgba(143, 131, 255, 0.13);
+
+  margin-bottom: 45px;
+}
+
+
+/* =========================
+   TREE
+========================= */
+
+.tree-scene {
+  overflow: hidden;
+}
+
+.tree-copy {
+  position: absolute;
+
+  top: 14%;
+
+  z-index: 2;
+}
+
+.tree-copy .sub {
+  margin-top: 22px;
+}
+
+#treeCanvas {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .letter-stage {
+    height: 58vh;
+  }
+
+  .letter-content h2 {
+    font-size: 34px;
+  }
+
+  .letter-content p:not(.letter-small) {
+    font-size: 17px;
+  }
+
+  h1 {
+    font-size: 60px;
+  }
+
+  .choices {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .choice {
+    padding:
+      14px 28px;
+  }
+}
