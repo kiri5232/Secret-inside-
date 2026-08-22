@@ -1,0 +1,561 @@
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-color: #08080a;
+  --text-main: #f0f0f3;
+  --text-muted: #8e8e99;
+  --accent-gold: #e2c08d;
+  --accent-glow: rgba(226, 192, 141, 0.15);
+  --card-bg: #121216;
+  --card-paper: #18181f;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --font-serif: 'Cinzel', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+/* Custom Cursor */
+.cursor {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, background 0.3s ease, opacity 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+body:hover .cursor {
+  opacity: 1;
+}
+
+/* Audio Button */
+.audio-btn {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s var(--transition-smooth);
+}
+
+.audio-btn:hover {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.audio-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.volume-on {
+  display: none;
+}
+
+.audio-btn.playing .volume-on {
+  display: block;
+}
+
+/* Canvas Background */
+#tree-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Main Container & Scene System */
+#app-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.2s var(--transition-smooth), visibility 1.2s var(--transition-smooth);
+  pointer-events: none;
+}
+
+.scene.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Reusable Typography & Buttons */
+.fade-text {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1s var(--transition-smooth), transform 1s var(--transition-smooth);
+}
+
+.fade-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+  padding: 14px 36px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 40px;
+  cursor: pointer;
+  margin-top: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s var(--transition-smooth);
+}
+
+.btn-primary:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   SCENE 1: CINEMATIC INTRO
+   ========================================================================== */
+.intro-content {
+  text-align: center;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.glowing-point {
+  width: 4px;
+  height: 4px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.6);
+  margin-bottom: 40px;
+  transition: transform 2.5s var(--transition-smooth), box-shadow 2.5s var(--transition-smooth);
+}
+
+.glowing-point.expanded {
+  transform: scale(8);
+  box-shadow: 0 0 40px 12px rgba(226, 192, 141, 0.4);
+}
+
+.intro-content p {
+  font-weight: 300;
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.intro-content .title-text {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: var(--text-main);
+  margin: 12px 0;
+  font-weight: 500;
+}
+
+.intro-content .subtitle-text {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.hand-wave {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  animation: wave 2.5s infinite;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+}
+
+/* ==========================================================================
+   SCENE 2: THE GIFT
+   ========================================================================== */
+.gift-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.gift-box {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  cursor: pointer;
+  perspective: 1000px;
+  animation: float 4s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.gift-box:hover {
+  transform: scale(1.05);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.gift-body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1f1f27, #121217);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  position: absolute;
+  bottom: 0;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.gift-lid {
+  width: 108%;
+  height: 28px;
+  background: linear-gradient(135deg, #2a2a35, #181820);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  position: absolute;
+  top: -8px;
+  left: -4%;
+  z-index: 3;
+  transition: transform 0.8s var(--transition-smooth);
+}
+
+.gift-ribbon-v {
+  position: absolute;
+  width: 16px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent-gold), #a38250);
+  left: calc(50% - 8px);
+  z-index: 2;
+  border-radius: 2px;
+}
+
+.gift-ribbon-h {
+  position: absolute;
+  width: 100%;
+  height: 16px;
+  background: linear-gradient(90deg, var(--accent-gold), #a38250);
+  top: calc(50% - 8px);
+  z-index: 2;
+  border-radius: 2px;
+}
+
+.gift-glow {
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  top: -20%;
+  left: -20%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gift-box.opened .gift-lid {
+  transform: translateY(-60px) rotate(-15deg);
+  opacity: 0;
+}
+
+.gift-box.opened {
+  animation: none;
+}
+
+.instruction-text {
+  margin-top: 32px;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: opacity 0.5s ease;
+}
+
+.gift-message-container {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ==========================================================================
+   SCENE 3: LETTER REVEAL
+   ========================================================================== */
+.letter-wrapper {
+  perspective: 1200px;
+  width: 100%;
+  max-width: 520px;
+}
+
+.letter-card {
+  width: 100%;
+  background: var(--card-paper);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 48px 40px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s var(--transition-smooth), border-color 0.4s ease;
+  cursor: pointer;
+}
+
+.letter-card.closed {
+  background: var(--card-bg);
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.letter-card.closed:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: rotateX(5deg) translateY(-4px);
+}
+
+.letter-preview-text {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.letter-card.open {
+  cursor: default;
+  transform: rotateX(0deg);
+}
+
+.letter-content {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.letter-card.open .letter-preview-text {
+  display: none;
+}
+
+.letter-card.open .letter-content {
+  display: flex;
+}
+
+.letter-content .line {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+}
+
+.letter-content .line.visible {
+  opacity: 0.9;
+  transform: translateY(0);
+}
+
+.letter-content .line.spacer {
+  height: 8px;
+}
+
+.letter-content .line.highlight {
+  color: var(--accent-gold);
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   SCENE 4 & 5: FRIENDSHIP QUESTION & PLAYFUL FAKE-OUT
+   ========================================================================== */
+.question-container {
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.q-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin: 16px 0 40px;
+  color: var(--text-main);
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  position: relative;
+  min-height: 60px;
+}
+
+.btn-choice {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  padding: 16px 48px;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-choice:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.btn-yes:hover {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.btn-no {
+  position: relative;
+  transition: left 0.3s var(--transition-smooth), top 0.3s var(--transition-smooth);
+}
+
+.fakeout-msg {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  display: none;
+}
+
+.fakeout-msg .sub {
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   SCENE 6 & 7: ENDINGS
+   ========================================================================== */
+.no-path-content {
+  text-align: center;
+  max-width: 480px;
+  line-height: 1.8;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.no-path-content .final-note {
+  margin-top: 24px;
+  color: var(--text-main);
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+}
+
+.tree-message-container {
+  position: absolute;
+  top: 20%;
+  text-align: center;
+  z-index: 10;
+}
+
+.tree-message-container h2 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  margin-top: 12px;
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN & ACCESSIBILITY
+   ========================================================================== */
+@media (max-width: 600px) {
+  .intro-content .title-text {
+    font-size: 1.8rem;
+  }
+  
+  .letter-card {
+    padding: 32px 24px;
+  }
+
+  .q-title {
+    font-size: 1.75rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .btn-choice {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
