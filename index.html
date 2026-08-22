@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>A Little Surprise 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Inter:wght@300;400;500&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --pink:#f28aaa;
+    --lightPink:#ffc3d5;
+    --deepPink:#d95f88;
+    --white:#fff8fb;
+    --bg:#020203;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    color:var(--white);
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.app{
+    width:100%;
+    height:100dvh;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 75%,rgba(125,34,67,.12),transparent 30%),
+        radial-gradient(circle at 50% 110%,rgba(255,72,133,.07),transparent 40%),
+        #020203;
+}
+
+/* subtle stars */
+
+.stars,
+.stars::before,
+.stars::after{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.stars{
+    opacity:.7;
+    background-image:
+        radial-gradient(circle,rgba(255,165,194,.7) 1px,transparent 1.5px),
+        radial-gradient(circle,rgba(255,255,255,.35) 1px,transparent 1.5px);
+    background-size:95px 120px,150px 170px;
+    background-position:20px 30px,70px 80px;
+    animation:starsMove 18s linear infinite;
+}
+
+@keyframes starsMove{
+    from{transform:translateY(0)}
+    to{transform:translateY(25px)}
+}
+
+/* =========================
+   SCREENS
+========================= */
+
+.screen{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+    opacity:0;
+    pointer-events:none;
+    transform:scale(.96);
+    transition:
+        opacity .7s ease,
+        transform .7s cubic-bezier(.22,1,.36,1);
+}
+
+.screen.active{
+    opacity:1;
+    pointer-events:auto;
+    transform:scale(1);
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress{
+    position:absolute;
+    top:27px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:7px;
+    z-index:20;
+}
+
+.dot{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#51444a;
+    transition:.5s ease;
+}
+
+.dot.active{
+    background:#ef94af;
+    box-shadow:0 0 10px rgba(239,148,175,.6);
+}
+
+.counter{
+    position:absolute;
+    right:7%;
+    top:28px;
+    color:#ddd;
+    font-size:10px;
+    opacity:.8;
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.mainText{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(29px,5vw,54px);
+    line-height:1.25;
+    text-align:center;
+    font-weight:400;
+    letter-spacing:.3px;
+}
+
+.smallText{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(20px,3vw,30px);
+    line-height:1.5;
+    text-align:center;
+}
+
+.pink{
+    color:var(--pink);
+}
+
+.script{
+    font-family:'Great Vibes',cursive;
+    color:#f4a0b9;
+}
+
+.cursor{
+    display:inline-block;
+    width:1px;
+    height:.9em;
+    background:#f59ab5;
+    margin-left:3px;
+    vertical-align:-5px;
+    animation:blink .8s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0}
+}
+
+.heartOutline{
+    margin-top:30px;
+    font-size:30px;
+    color:#ed91ae;
+    animation:heartFloat 2s ease-in-out infinite;
+}
+
+@keyframes heartFloat{
+    50%{transform:translateY(-7px)}
+}
+
+/* =========================
+   GIFT
+========================= */
+
+.giftScene{
+    position:relative;
+    width:250px;
+    height:220px;
+    margin-top:25px;
+}
+
+.gift{
+    position:absolute;
+    left:50%;
+    bottom:20px;
+    transform:translateX(-50%);
+    width:155px;
+    height:125px;
+    background:
+        linear-gradient(90deg,transparent 42%,rgba(255,188,210,.8) 43%,rgba(255,188,210,.8) 57%,transparent 58%),
+        linear-gradient(#6e4c55,#38262c);
+    border-radius:3px;
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.8),
+        0 0 25px rgba(255,117,158,.15);
+}
+
+.gift::before{
+    content:"";
+    position:absolute;
+    width:170px;
+    height:25px;
+    top:-17px;
+    left:-8px;
+    background:
+        linear-gradient(90deg,transparent 43%,#f6a6bc 44%,#f6a6bc 56%,transparent 57%),
+        #60434b;
+    border-radius:4px;
+}
+
+.ribbon{
+    position:absolute;
+    left:50%;
+    top:-48px;
+    transform:translateX(-50%);
+    width:65px;
+    height:45px;
+}
+
+.ribbon::before,
+.ribbon::after{
+    content:"";
+    position:absolute;
+    width:45px;
+    height:27px;
+    border:8px solid #f3a0b9;
+    border-radius:80% 20% 80% 20%;
+    top:0;
+}
+
+.ribbon::before{
+    right:27px;
+    transform:rotate(28deg);
+}
+
+.ribbon::after{
+    left:27px;
+    transform:scaleX(-1) rotate(28deg);
+}
+
+.ribbonCenter{
+    position:absolute;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:#f5a3bb;
+    left:50%;
+    top:15px;
+    transform:translateX(-50%);
+}
+
+.arrow{
+    color:#f49ab4;
+    font-size:38px;
+    margin:10px;
+    animation:arrowBounce 1.4s infinite;
+}
+
+@keyframes arrowBounce{
+    50%{transform:translateY(8px)}
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letterWrap{
+    position:relative;
+    width:min(330px,82vw);
+    height:min(430px,62vh);
+    perspective:1000px;
+}
+
+.envelope{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(135deg,#1b1518,#090809);
+    border:1px solid #49353d;
+    border-radius:5px;
+    box-shadow:0 25px 60px #000;
+    transform:rotate(-4deg);
+}
+
+.envelope::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:50%;
+    background:linear-gradient(145deg,#3b252e,#151015);
+    clip-path:polygon(0 0,100% 0,50% 100%);
+}
+
+.letter{
+    position:absolute;
+    left:8%;
+    top:8%;
+    width:84%;
+    height:88%;
+    background:
+        radial-gradient(circle at 20% 10%,#fff,#ead9d0);
+    color:#44343a;
+    padding:35px 22px;
+    box-shadow:0 10px 30px #000;
+    transform:translateY(40px) rotate(-1deg);
+    transition:1s cubic-bezier(.22,1,.36,1);
+    overflow:hidden;
+}
+
+.letter.open{
+    transform:translateY(-5px) rotate(-1deg);
+}
+
+.letterTitle{
+    font-family:'Great Vibes',cursive;
+    font-size:27px;
+    margin-bottom:18px;
+}
+
+.letter p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:18px;
+    line-height:1.45;
+}
+
+.letterHeart{
+    position:absolute;
+    bottom:18px;
+    right:20px;
+    color:#cf5e7f;
+    font-size:24px;
+}
+
+/* =========================
+   QUESTION
+========================= */
+
+.questionBox{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:min(600px,100%);
+}
+
+.question{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(29px,5vw,50px);
+    line-height:1.3;
+    text-align:center;
+    margin:25px 0 35px;
+}
+
+.buttons{
+    display:flex;
+    gap:18px;
+    position:relative;
+    min-height:52px;
+    justify-content:center;
+}
+
+.btn{
+    border:none;
+    outline:none;
+    cursor:pointer;
+    min-width:95px;
+    padding:14px 27px;
+    border-radius:9px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:17px;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.yes{
+    background:linear-gradient(135deg,#e46e91,#d85a81);
+    color:white;
+    box-shadow:0 8px 25px rgba(220,82,125,.2);
+}
+
+.yes:hover{
+    transform:translateY(-3px) scale(1.04);
+    box-shadow:0 12px 35px rgba(220,82,125,.35);
+}
+
+.no{
+    background:transparent;
+    color:white;
+    border:1px solid #c27a91;
+    position:relative;
+}
+
+.no.running{
+    position:fixed;
+    z-index:100;
+    transition:
+        left .35s cubic-bezier(.22,1,.36,1),
+        top .35s cubic-bezier(.22,1,.36,1),
+        transform .35s ease;
+}
+
+/* =========================
+   YES FALLING
+========================= */
+
+.fallingYes{
+    position:fixed;
+    z-index:200;
+    pointer-events:none;
+    opacity:0;
+    min-width:95px;
+    padding:14px 27px;
+    border-radius:9px;
+    background:#dc6688;
+    color:white;
+    font-family:'Cormorant Garamond',serif;
+    font-size:17px;
+}
+
+.fallingYes.drop{
+    animation:yesDrop 1.6s cubic-bezier(.18,.8,.25,1) forwards;
+}
+
+@keyframes yesDrop{
+    0%{
+        opacity:1;
+        transform:translate(0,0) rotate(0deg);
+    }
+    60%{
+        opacity:1;
+        transform:translate(0,55vh) rotate(8deg);
+    }
+    100%{
+        opacity:0;
+        transform:translate(0,65vh) rotate(20deg) scale(.2);
+    }
+}
+
+/* =========================
+   TREE
+========================= */
+
+.treeScene{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    padding-bottom:7vh;
+    pointer-events:none;
+}
+
+.ground{
+    position:absolute;
+    bottom:5vh;
+    width:250px;
+    height:35px;
+    border-radius:50%;
+    background:radial-gradient(ellipse,rgba(232,94,134,.3),transparent 70%);
+    filter:blur(2px);
+}
+
+.tree{
+    position:relative;
+    width:min(400px,75vw);
+    height:min(500px,72vh);
+    transform-origin:bottom center;
+    transform:scale(.08);
+    opacity:0;
+}
+
+.tree.growing{
+    animation:treeGrow 5s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+@keyframes treeGrow{
+    0%{
+        opacity:0;
+        transform:scale(.08);
+    }
+    25%{opacity:1}
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.trunk{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    width:35px;
+    height:70%;
+    transform:translateX(-50%);
+    background:linear-gradient(90deg,#301c1c,#7c4b35,#301c1c);
+    border-radius:50% 50% 5px 5px;
+}
+
+.branch{
+    position:absolute;
+    width:18px;
+    height:45%;
+    bottom:42%;
+    left:50%;
+    background:#5d382d;
+    transform-origin:bottom;
+    border-radius:50px;
+}
+
+.branch.one{
+    transform:rotate(-45deg);
+}
+
+.branch.two{
+    transform:rotate(43deg);
+}
+
+.branch.three{
+    height:32%;
+    transform:rotate(-18deg);
+}
+
+.branch.four{
+    height:35%;
+    transform:rotate(22deg);
+}
+
+.heartCluster{
+    position:absolute;
+    inset:0;
+}
+
+.heartLeaf{
+    position:absolute;
+    color:#f27fa5;
+    font-size:clamp(17px,3vw,30px);
+    opacity:0;
+    transform:scale(0);
+    animation:leafAppear .6s ease forwards;
+    text-shadow:
+        0 0 10px rgba(245,110,157,.5),
+        0 0 25px rgba(245,110,157,.25);
+}
+
+@keyframes leafAppear{
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.fallingPetal{
+    position:absolute;
+    color:#f08aaa;
+    font-size:16px;
+    animation:petalFall linear forwards;
+    pointer-events:none;
+}
+
+@keyframes petalFall{
+    from{
+        transform:translateY(-10vh) rotate(0deg);
+        opacity:0;
+    }
+    15%{opacity:.9}
+    to{
+        transform:translateY(110vh) translateX(var(--x)) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.finalScreen{
+    justify-content:center;
+    align-items:center;
+}
+
+.finalContent{
+    width:min(1100px,92vw);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+}
+
+.finalText{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(22px,3vw,34px);
+    line-height:1.65;
+    opacity:0;
+    transform:translateX(-30px);
+}
+
+.finalText.show{
+    animation:finalText .9s ease forwards;
+}
+
+@keyframes finalText{
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+.finalTree{
+    width:min(500px,48vw);
+    height:min(550px,60vh);
+    position:relative;
+}
+
+.finalTree .tree{
+    width:100%;
+    height:100%;
+    transform:scale(1);
+    opacity:1;
+}
+
+.bless{
+    color:#87b970;
+}
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.sound{
+    position:absolute;
+    right:22px;
+    bottom:20px;
+    z-index:300;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:1px solid #49333c;
+    background:#080608;
+    color:#f29ab5;
+    cursor:pointer;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+    .screen{
+        padding:25px 18px;
+    }
+
+    .progress{
+        top:22px;
+    }
+
+    .counter{
+        top:22px;
+        right:20px;
+    }
+
+    .mainText{
+        font-size:31px;
+    }
+
+    .giftScene{
+        transform:scale(.9);
+    }
+
+    .letterWrap{
+        height:410px;
+    }
+
+    .letter p{
+        font-size:17px;
+    }
+
+    .question{
+        font-size:30px;
+        max-width:330px;
+    }
+
+    .buttons{
+        gap:12px;
+    }
+
+    .btn{
+        min-width:90px;
+        padding:13px 23px;
+    }
+
+    .tree{
+        width:310px;
+        height:410px;
+    }
+
+    .finalContent{
+        flex-direction:column;
+        justify-content:center;
+        gap:5px;
+    }
+
+    .finalText{
+        order:2;
+        width:100%;
+        text-align:center;
+        font-size:22px;
+        line-height:1.45;
+        margin-top:-20px;
+    }
+
+    .finalTree{
+        order:1;
+        width:320px;
+        height:390px;
+    }
+}
+
+@media(min-width:701px){
+
+    .screen{
+        padding:40px;
+    }
+
+    .finalTree{
+        margin-right:5vw;
+    }
+}
+
+/* =========================
+   TRANSITIONS
+========================= */
+
+.fadeText{
+    animation:fadeText .9s ease both;
+}
+
+@keyframes fadeText{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.hidden{
+    display:none!important;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="stars"></div>
+
+    <!-- PROGRESS -->
+    <div class="progress" id="progress"></div>
+    <div class="counter" id="counter">1/6</div>
+
+    <!-- ================= SCREEN 1 ================= -->
+
+    <section class="screen active" id="screen1">
+
+        <div class="mainText">
+            <span id="introTyping"></span><span class="cursor"></span>
+        </div>
+
+    </section>
+
+    <!-- ================= SCREEN 2 ================= -->
+
+    <section class="screen" id="screen2">
+
+        <div class="mainText fadeText">
+            Hey...<br>
+            <span class="pink">new neighbour.</span>
+        </div>
+
+        <div class="heartOutline">♡</div>
+
+    </section>
+
+    <!-- ================= SCREEN 3 ================= -->
+
+    <section class="screen" id="screen3">
+
+        <div class="mainText fadeText">
+            I made something<br>
+            just for <span class="pink">you.</span>
+        </div>
+
+        <div class="heartOutline">♡</div>
+
+    </section>
+
+    <!-- ================= SCREEN 4 ================= -->
+
+    <section class="screen" id="screen4">
+
+        <div class="smallText">
+            Open the<br>
+            <span class="script" style="font-size:45px;">surprise</span>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="giftScene">
+            <div class="gift">
+                <div class="ribbon">
+                    <div class="ribbonCenter"></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ================= SCREEN 5 ================= -->
+
+    <section class="screen" id="screen5">
+
+        <div class="letterWrap" id="envelope">
+
+            <div class="envelope"></div>
+
+            <div class="letter">
+                <div class="letterTitle">Hey you...</div>
+
+                <p>
+                    Hmm...<br><br>
+
+                    We might just be living next to each other,
+                    but somehow I felt like we needed something
+                    a little more than a simple "hi".<br><br>
+
+                    So here I am... sending you a tiny surprise
+                    wrapped with good vibes and a lot of sincerity.
+                    <br><br>
+
+                    Thank you for being a part of this little
+                    neighbourhood.
+                </p>
+
+                <div class="letterHeart">♥</div>
+            </div>
+
+        </div>
+
+        <div class="smallText" style="margin-top:25px;">
+            Tap the letter
+        </div>
+
+    </section>
+
+    <!-- ================= SCREEN 6 ================= -->
+
+    <section class="screen" id="screen6">
+
+        <div class="letterWrap">
+
+            <div class="envelope"></div>
+
+            <div class="letter open">
+
+                <div class="letterTitle">
+                    Hey neighbour,
+                </div>
+
+                <p>
+                    We might just live next to each other,
+                    but I thought it would be nice to actually
+                    know each other.<br><br>
+
+                    So here I am, taking a tiny chance...
+                    maybe we could start with something simple?
+                    <br><br>
+
+                    Maybe just a friendship.
+                    Nothing complicated. Just good vibes,
+                    random conversations and someone new
+                    to say "hey" to. 🌸
+                    <br><br>
+
+                    What do you say?
+                </p>
+
+                <div class="letterHeart">♥</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= SCREEN 7 ================= -->
+
+    <section class="screen" id="screen7">
+
+        <div class="questionBox">
+
+            <div class="smallText">
+                One tiny question...
+            </div>
+
+            <div class="question">
+                Will you be my<br>
+                <span class="pink">friend?</span>
+            </div>
+
+            <div class="buttons">
+
+                <button class="btn yes" id="yesBtn">
+                    Yes
+                </button>
+
+                <button class="btn no" id="noBtn">
+                    No
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= SCREEN 8 ================= -->
+
+    <section class="screen" id="screen8">
+
+        <div class="smallText">
+            Arre arre arre! 😜
+        </div>
+
+        <div class="question">
+            You can't escape that<br>
+            easily!
+        </div>
+
+        <div class="buttons">
+
+            <button class="btn yes yesAgain">
+                Yes
+            </button>
+
+            <button class="btn no" id="noBtn2">
+                No
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ================= SCREEN 9 ================= -->
+
+    <section class="screen" id="screen9">
+
+        <div class="smallText">
+            Okay okay...
+        </div>
+
+        <div class="question">
+            Seriously?
+        </div>
+
+        <div class="smallText" style="max-width:430px;">
+            Do you really not want<br>
+            to be friends? 🥺
+        </div>
+
+        <div class="buttons" style="margin-top:35px;">
+
+            <button class="btn yes yesFinal">
+                Yes
+            </button>
+
+            <button class="btn no" id="noBtn3">
+                No
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ================= SCREEN 10 ================= -->
+
+    <section class="screen" id="screen10">
+
+        <div class="mainText" id="successText"></div>
+
+        <div class="smallText" style="margin-top:25px;">
+            <span class="script">something special</span>
+            <br>
+            is growing for you...
+        </div>
+
+        <div class="seed" id="seed"></div>
+
+    </section>
+
+    <!-- ================= SCREEN 11 ================= -->
+
+    <section class="screen" id="screen11">
+
+        <div class="treeScene">
+
+            <div class="ground"></div>
+
+            <div class="tree" id="tree">
+
+                <div class="trunk"></div>
+
+                <div class="branch one"></div>
+                <div class="branch two"></div>
+                <div class="branch three"></div>
+                <div class="branch four"></div>
+
+                <div class="heartCluster" id="heartCluster"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= SCREEN 12 ================= -->
+
+    <section class="screen finalScreen" id="screen12">
+
+        <div class="finalContent">
+
+            <div class="finalText" id="finalText">
+
+            
