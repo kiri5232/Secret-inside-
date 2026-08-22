@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello, Neighbour</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Custom Subtle Cursor -->
+  <div id="custom-cursor" class="cursor"></div>
+
+  <!-- Audio Control -->
+  <button id="audio-toggle" class="audio-btn" aria-label="Toggle ambient sound">
+    <svg id="speaker-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path class="volume-off" d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path class="volume-on" d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+    </svg>
+  </button>
+
+  <!-- Canvas for Tree Animation & Background Particle Glows -->
+  <canvas id="tree-canvas"></canvas>
+
+  <!-- Continuous Story Container -->
+  <main id="app-container">
+
+    <!-- SCENE 1: CINEMATIC INTRO -->
+    <section id="scene-intro" class="scene active">
+      <div class="intro-content">
+        <div class="glowing-point" id="intro-orb"></div>
+        <div class="text-container">
+          <p class="fade-text" id="intro-t1">Hey…</p>
+          <p class="fade-text title-text" id="intro-t2">New Neighbour <span class="hand-wave">👋</span></p>
+          <p class="fade-text subtitle-text" id="intro-t3">I made something tiny for you.</p>
+        </div>
+        <button id="btn-intro-continue" class="btn-primary fade-text" aria-label="Continue">
+          Continue
+        </button>
+      </div>
+    </section>
+
+    <!-- SCENE 2: THE GIFT -->
+    <section id="scene-gift" class="scene">
+      <div class="gift-container">
+        <div id="gift-box" class="gift-box" tabIndex="0" role="button" aria-label="Open the gift">
+          <div class="gift-lid"></div>
+          <div class="gift-body"></div>
+          <div class="gift-ribbon-v"></div>
+          <div class="gift-ribbon-h"></div>
+          <div class="gift-glow"></div>
+        </div>
+        <p class="instruction-text" id="gift-instruction">Click the gift to open</p>
+        <div class="gift-message-container">
+          <p class="fade-text" id="gift-msg-1">Okay… maybe this is a little unnecessary 😅</p>
+          <p class="fade-text" id="gift-msg-2">But I wanted to make something different.</p>
+          <button id="btn-gift-continue" class="btn-primary fade-text" aria-label="Continue">
+            Continue
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 3: LETTER REVEAL -->
+    <section id="scene-letter" class="scene">
+      <div class="letter-wrapper">
+        <div id="letter-card" class="letter-card closed" tabIndex="0" role="button" aria-label="Open envelope">
+          <div class="envelope-flap"></div>
+          <div class="letter-preview-text">Tap to open</div>
+          <div class="letter-paper">
+            <div class="letter-content">
+              <p class="line">Hey, neighbour! 👋</p>
+              <p class="line">We've technically been neighbours for a while,</p>
+              <p class="line">but somehow never properly introduced ourselves.</p>
+              <p class="line spacer"></p>
+              <p class="line">So instead of doing the normal</p>
+              <p class="line">‘Hi, I'm your neighbour’ thing…</p>
+              <p class="line spacer"></p>
+              <p class="line">I made this.</p>
+              <p class="line spacer"></p>
+              <p class="line">Yes. I know. This was probably unnecessary. 😅</p>
+              <p class="line spacer"></p>
+              <p class="line highlight">But hey, you only get one chance to make a first impression.</p>
+            </div>
+            <button id="btn-letter-continue" class="btn-primary" aria-label="Continue after reading">
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 4 & 5: FRIENDSHIP REQUEST & PLAYFUL FAKE-OUT -->
+    <section id="scene-question" class="scene">
+      <div class="question-container">
+        <p class="fade-text" id="q-intro">So… one tiny question.</p>
+        <h2 class="fade-text q-title" id="q-main">Want to be friends?</h2>
+        
+        <p class="fade-text fakeout-msg" id="fakeout-text">
+          Okay okay 😭<br>I'm kidding.<br><span class="sub">You can actually choose.</span>
+        </p>
+
+        <div class="button-group fade-text" id="q-buttons">
+          <button id="btn-yes" class="btn-choice btn-yes">YES</button>
+          <button id="btn-no" class="btn-choice btn-no">NO</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 6 (NO PATH): MINIMAL ENDING -->
+    <section id="scene-no-path" class="scene">
+      <div class="no-path-content">
+        <p class="fade-text">Fair enough 😄</p>
+        <p class="fade-text">Sorry if this was a little unexpected.<br>I just wanted to make something fun.</p>
+        <p class="fade-text final-note">Take care, neighbour 👋</p>
+      </div>
+    </section>
+
+    <!-- SCENE 7 (YES PATH): TREE FINAL MESSAGE -->
+    <section id="scene-yes-path" class="scene">
+      <div class="tree-message-container">
+        <p class="fade-text" id="tree-msg-1">Looks like I just made a new friend. 🌱</p>
+        <h2 class="fade-text" id="tree-msg-2">Welcome, neighbour.</h2>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+  </html>
+  
