@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Hello, Neighbour 💗</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="noise"></div>
+
+  <!-- =====================================
+       01 — INTRO
+  ====================================== -->
+
+  <section class="screen active" id="intro">
+
+    <div class="intro-content">
+
+      <div class="typing-line">
+        <span id="introText"></span>
+        <span class="cursor">|</span>
+      </div>
+
+      <div class="intro-heart">♡</div>
+
+      <button class="ghost-btn hidden" id="introNext">
+        continue
+        <span>↓</span>
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================
+       02 — SECOND INTRO
+  ====================================== -->
+
+  <section class="screen" id="intro2">
+
+    <div class="center-content">
+
+      <p class="mini-title">a tiny secret</p>
+
+      <h1>
+        I made something
+        <em>just for you.</em>
+      </h1>
+
+      <div class="little-heart">♡</div>
+
+      <button class="ghost-btn" data-next="gift">
+        let's see
+        <span>↓</span>
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================
+       03 — GIFT
+  ====================================== -->
+
+  <section class="screen" id="gift">
+
+    <div class="gift-content">
+
+      <p class="mini-title">something unnecessary</p>
+
+      <h1>
+        Open the
+        <em>surprise.</em>
+      </h1>
+
+      <button class="gift-button" id="giftButton">
+
+        <div class="gift-box">
+
+          <div class="gift-lid"></div>
+
+          <div class="gift-body"></div>
+
+          <div class="gift-ribbon-v"></div>
+          <div class="gift-ribbon-h"></div>
+
+          <div class="gift-bow">
+            <span></span>
+            <span></span>
+          </div>
+
+        </div>
+
+      </button>
+
+      <p class="tap-text">
+        tap the gift
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================
+       04 — ENVELOPE
+  ====================================== -->
+
+  <section class="screen" id="letter">
+
+    <div class="letter-wrapper">
+
+      <div class="envelope" id="envelope">
+
+        <div class="envelope-back"></div>
+
+        <div class="paper">
+
+          <div class="paper-inner">
+
+            <span class="paper-label">
+              HELLO, NEIGHBOUR
+            </span>
+
+            <h2>
+              A slightly
+              <em>unnecessary</em>
+              letter.
+            </h2>
+
+            <p>
+              We might just live near each other,
+              but somehow we never really got the
+              chance to properly say hello.
+            </p>
+
+            <p>
+              So here I am, doing the completely
+              normal thing of making a tiny website
+              instead. 😭
+            </p>
+
+            <p>
+              I just thought...
+              why not make saying hello
+              a little more interesting?
+            </p>
+
+            <div class="paper-line"></div>
+
+            <p class="small-note">
+              No big reason. Just a little creativity
+              and a random thought that refused to go away.
+            </p>
+
+            <button class="paper-btn" id="letterContinue">
+              continue
+              <span>→</span>
+            </button>
+
+          </div>
+
+        </div>
+
+        <div class="envelope-flap"></div>
+
+        <div class="seal">♡</div>
+
+      </div>
+
+      <p class="letter-hint">
+        tap the letter
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================
+       05 — QUESTION
+  ====================================== -->
+
+  <section class="screen" id="question">
+
+    <div class="question-content">
+
+      <p class="mini-title">
+        one tiny question...
+      </p>
+
+      <h1>
+        Will you be my
+        <em>friend?</em>
+      </h1>
+
+      <div class="question-heart">♡</div>
+
+      <div class="choices">
+
+        <button class="choice yes" id="yesBtn">
+          Yes
+        </button>
+
+        <button class="choice no" id="noBtn">
+          No
+        </button>
+
+      </div>
+
+      <p class="question-note" id="questionNote">
+        no pressure. seriously.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================
+       06 — SECOND QUESTION
+  ====================================== -->
+
+  <section class="screen" id="realQuestion">
+
+    <div class="question-content">
+
+      <p class="mini-title">
+        okay okay...
+      </p>
+
+      <h1>
+        Seriously?
+      </h1>
+
+      <p class="serious-text">
+        Do you really not want
+        to be friends? 🥺
+      </p>
+
+      <div class="choices">
+
+        <button class="choice yes" id="realYes">
+          Yes
+        </button>
+
+        <button class="choice no" id="realNo">
+          No
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================
+       07 — NO END
+  ====================================== -->
+
+  <section class="screen" id="noEnd">
+
+    <div class="no-end-content">
+
+      <div class="tiny-moon"></div>
+
+      <p class="mini-title">
+        fair enough
+      </p>
+
+      <h1>
+        Okay, neighbour. 😄
+      </h1>
+
+      <p>
+        Sorry for the random website.
+        <br>
+        I just felt like making something.
+      </p>
+
+      <span class="signature">
+        — your slightly weird neighbour
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================
+       08 — YES / SEED
+  ====================================== -->
+
+  <section class="screen tree-screen" id="tree">
+
+    <canvas id="treeCanvas"></canvas>
+
+    <div class="seed-message" id="seedMessage">
+
+      <p>
+        Yesss! 💗
+      </p>
+
+      <span>
+        That made my day.
+      </span>
+
+    </div>
+
+    <div class="tree-final" id="treeFinal">
+
+      <div class="final-message">
+
+        <p>
+          Hey you 💕
+        </p>
+
+        <p>
+          Happy Birthday 💗
+        </p>
+
+        <p>
+          May God bless you 💚
+        </p>
+
+        <p>
+          And give you many happiness 💕
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <script src="script.js"></script>
+
+</body>
+  </html>
